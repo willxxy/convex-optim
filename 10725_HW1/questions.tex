@@ -1,0 +1,218 @@
+\section{Convex sets}
+In this problem you want to prove that some commonly used sets are convex. 
+
+\subsection{The polytope (5 points)} 
+
+A $d$-dimensional polytope $\mathcal{P}$ is a set in $\mathbb{R}^d$, defined as the set of points $x \in \mathbb{R}^d$  satisfying the following constraints:  For an integer $m > 0$, for $m$ vectors $a_1, \cdots, a_m \in \mathbb{R}^d$ and $m$ values $b_i \in \mathbb{R}$: 
+\begin{align}
+\forall i \in [m ]: \langle a_i , x \rangle \leq b_i
+\end{align}
+
+
+Show that $\mathcal{P}$ is a convex set. 
+
+Use this to show that the $\ell_1$ ball: $\{ x \in \mathbb{R}^d \mid \| x \|_1 \leq 1\}$ is a convex set.
+
+\subsection{The unit ball (5 points)} \label{sec:problem123}
+A $d$-dimensional unit ball $\mathcal{B}$ is a set in $\mathbb{R}^d$ , defined as the set of points  $x \in \mathbb{R}^d$  satisfying the following constraints: 
+$$\sum_{i \in [d]} x_i^2 \leq 1$$
+
+Where $x_i$ is the $i$-th coordinate of $x$. 
+
+Show that $\mathcal{B}$ is a convex set. 
+
+
+(Hint: You can use the following fact: For any value $a, b \in \mathbb{R}$, $2ab \leq a^2 + b^2$. Now, use the basic definition for convex set and apply this inequality $d$ times on each coordinate) 
+
+\subsection{The linear transformation (5 points)}
+
+Suppose $\mathcal{D}$ is a convex set in $\mathbb{R}^d$ and $A \in \mathbb{R}^{d \times d}$ is a matrix and $b \in \mathbb{R}^d$ is a vector.
+
+Show that the following set is also convex:
+$$\{ x \in \mathbb{R}^d \mid A x + b \in \mathcal{D} \}$$
+
+\subsection{Ellipsoid (5 points)}
+
+Use the previous two subproblems to show that an Ellipsoid is convex: An Ellipsoid $\mathcal{E}$ in $\mathbb{R}^d$ is a set defined as: for some matrix $A$ in $\mathbb{R}^{d \times d}$ and vector $b \in \mathbb{R}^d$: 
+\begin{align}
+\mathcal{E} = \{ x \in \mathbb{R}^d \mid (x - b)^{\top} A^{\top} A (x - b) \leq 1 \}.
+\end{align}
+
+\newpage
+\section{Convex functions}
+In this problem you want to show  that some commonly used functions are convex.   You can use the basic definition or the alternative definition mentioned in class in the second lecture. 
+
+
+\subsection{1-d convex function (10 points)}
+
+\textbf{(1 Point each bullet point)} Show that the following functions ($\mathbb{R} \to \mathbb{R}$) are convex functions:
+\begin{itemize}
+    \item $f(x) = x$
+    \item $f(x) = e^x$
+    \item $f(x) = x \log x$ ($x \geq 0$)
+    \item $f(x) = \log(1 + e^x)$
+    \item $f(x) = \text{ReLU}(x)$
+    \item $f(x) = (\text{ReLU}(x) )^c$ for any $c \geq 1.$
+\end{itemize}
+Show that the following functions are not convex functions:
+\begin{itemize}
+    \item $f(x) = \sin (x)$
+    \item $f(x)  = \cos (x)$
+    \item $f(x) = x \sin (x)$
+    \item $f(x) = x e^x.$
+\end{itemize}
+
+
+%(Hint: You can use the Hessian condition of convex functions in Lecture 2)
+
+
+\subsection{The linear transformation (5 points)}
+
+Suppose $f$ is a convex function over $\mathbb{R}^d$, show that for any positive integer $d'$, any matrix $A \in \mathbb{R}^{d \times d'}$ and any vector $b \in \mathbb{R}^{d}$, $g(x) := f(Ax + b)$ is a convex function over $\mathbb{R}^{d'}$ as well. 
+
+\subsection{The non-negative summation (5 points)}
+
+Suppose $f_1, \cdots, f_m$ are convex functions over $\mathbb{R}^d$, show that for any $\lambda_1, \cdots, \lambda_m \geq 0$, 
+$$f(x) := \sum_{i \in [m]}\lambda_i f_i(x)$$
+
+
+is a convex function over  $\mathbb{R}^d$. 
+
+
+Give a counter example that $f_1(x) \times f_2( x) \times \cdots \times f_m(x)$ is not a convex function. 
+
+\subsection{The max operation (5 points)}
+
+Suppose $f_1, \cdots, f_m$ are convex functions over $\mathbb{R}^d$, show that
+$$f(x) = \max \left\{ f_1(x), \cdots, f_m(x) \right\}$$
+
+
+is a convex function over  $\mathbb{R}^d$. 
+
+
+What about  $g(x) = \min \left\{ f_1(x), \cdots, f_m(x) \right\}$?
+
+\subsection{Logistic Regression (5 points)}
+
+The objective function in the logistic regression problem is of the form
+\[
+f(x) = \sum_{i\in[m]} -\log\left(\frac{1}{1+\exp\{-y_i \langle a_i, x\rangle\}}\right),
+\]
+where $x, a_1, \dots, a_m \in \bbR^d$.
+%
+Prove that $f(x)$ is convex.
+
+
+%(Hint: Combine the linear transformation, 1-d function $\log(1 + e^x)$ and the non-negative summation problems)
+
+
+\newpage
+\section{Characterizations of Convexity (10 points)}
+Throughout this question suppose that your function $f$ is twice differentiable on $\mathbb{R}^d$. 
+In lecture we discussed three characterizations of convexity. In this question we will explore some of these characterizations.
+
+\begin{enumerate}
+\item \textbf{(3 pts)} Show that if $f$ is convex, and differentiable, then it must 
+satisfy the condition that for any pair $x,y \in \mathbb{R}^d$, 
+\begin{align*}
+f(y) \geq f(x) + \nabla f(x)^T (y - x). 
+\end{align*}
+You can use the following characterization of a gradient,
+\begin{align*}
+\nabla f(x)^T v = \lim_{t \rightarrow 0} \frac{f(x + t v) - f(x)}{t}. 
+\end{align*}
+
+\item \textbf{(4 pts)} Show that if $f$ is differentiable, and has monotone gradient, then it is convex by the first-order characterization, i.e. satisfies that for any $x,y,$\begin{align*}
+f(y) \geq f(x) +  \nabla f(x)^T (y - x). 
+\end{align*}
+
+The fundamental theorem of calculus is useful to recall: for any nice (continuously differentiable on $[0,1]$) function, $\int_{0}^1 f'(t) dt = f(1) - f(0)$. 
+
+Particularly, an expression you might find useful to play with (try to bound it or re-express it using the fundamental theorem etc.) is,
+\begin{align*}
+I_1 &:= \int_0^1 \frac{d}{dt} f( (1-t)x + ty) dt.
+\end{align*}
+
+\item \textbf{(3 pts)} Show that if $f$ is convex then the fact that $\nabla^2 f(x) \succeq 0$ for every $x$, implies that $f$ has monotone gradient. 
+
+Once again, the fundamental theorem might be useful. This time try playing with the expression,
+\begin{align*}
+I_2 &:= \int_0^1 \frac{d}{dt} \left( \nabla f( (1-t)x + ty) \right) dt \in \mathbb{R}^d. 
+\end{align*}
+
+\end{enumerate}
+
+
+
+\newpage
+\section{Optimization with CVX (20 points)}
+CVX is a framework for disciplined convex programming: it's rarely
+the fastest tool for the job, but it's widely applicable, and so it's a great
+tool to be comfortable with. In this exercise we will set up the CVX
+environment and solve a convex optimization problem.
+
+Generally speaking, for homeworks in this class, your solution to programming-based problems should include plots and whatever explanation necessary to answer the questions asked. In addition, your full code should be submitted to the Homework 1 Gradescope submission slot otherwise you will not get credit for the programming section.
+
+CVX variants are available for each of the major numerical programming
+languages. There are some minor syntactic and functional differences between the
+variants but all provide essentially the same functionality.  Download the CVX
+variant of your choosing: 
+\begin{itemize}
+\item Matlab: \url{http://cvxr.com/cvx/}
+\item Python: \url{http://www.cvxpy.org/}
+\item R: \url{https://cvxr.rbind.io}
+\item Julia: \url{https://github.com/JuliaOpt/Convex.jl}
+\end{itemize}
+and consult the documentation to understand the basic functionality. Make sure 
+that you can solve the least squares problem $\min_\beta \; \|y-X\beta\|_2^2$
+for an arbitrary vector $y$ and matrix $X$. Check your answer by comparing with
+the closed-form solution $(X^T X)^{-1} X^T y$. 
+
+\bigskip
+\noindent
+Given labels $y \in \{-1,1\}^n$, and a feature matrix $X \in
+\R^{n\times p}$ with rows $x_1,\ldots x_n$, recall the support vector machine 
+(SVM) problem
+\begin{alignat*}{2}
+&\min_{\beta,\beta_0,\xi} \quad
+&& \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
+&\text{subject to} \quad && \xi_i \geq 0, \; i=1,\ldots n \\
+& && y_i(x_i^T \beta + \beta_0) \geq 1-\xi_i, \;
+i=1,\ldots n.
+\end{alignat*}  
+\begin{enumerate}
+\item \textbf{(5 pts)} Load the training data in {\tt xy\_train.csv}.  This is a matrix of $n=200$
+  row and 3 columns.  The first two columns give the first $p=2$ features, and
+  the third column gives the labels.  Using CVX, solve the SVM problem with
+  $C=1$.  Report the optimal crtierion value, and the optimal coefficients
+  $\beta \in \R^2$ and intercept $\beta_0 \in \R$.  
+
+\item \textbf{(5 pts)} Recall that the SVM solution defines a hyperplane
+  $$
+  \beta_0 + \beta^T x = 0,
+  $$
+  which serves as the decision boundary for the SVM classifier.  Plot the
+  training data and color the points from the two classes differently.  Draw 
+  the decision boundary on top.  
+
+\item \textbf{(5 pts)} Now define \smash{$\widetilde{X} \in \R^{n \times p}$} to have rows
+  $\widetilde{x}_i=y_i x_i$, $i=1,\ldots,n$, and solve using CVX the problem  
+  \begin{alignat*}{2}
+    &\max_w \quad && -\frac{1}{2} w^T \widetilde{X} \widetilde{X}^T w + 1^T w \\   
+    &\text{subject to} \quad && 0 \leq w \leq C1, \; w^T y = 0,
+  \end{alignat*}  
+  (Above, we use 1 to denote the vector of all 1s.)  Report the optimal
+  criterion value; it should match that from part (1).  Also report
+  \smash{$\widetilde{X}^T w$} at the optimal $w$; this should mach the optimal
+  $\beta$ from part (1).  Note: this is not a coincidence, and is an example of
+  {\it duality}, as we will study in detail later in the course. 
+
+\item \textbf{(5 pts)} Investigate many values of the cost parameter $C=2^a$, as $a$ varies from
+  $-5$ to $5$.  For each one, solve the SVM problem, form the decision boundary,
+  and calculate the misclassification error on the test data in {\tt
+    xy\_test.csv}.  Make a plot of misclassification error (y-axis) versus $C$
+  (x-axis, which you will probably want to put a log scale). 
+
+\end{enumerate}
+
+\textbf{Important: }Remember that you \textbf{MUST} submit all code used in this part to the Programming submission slot on Gradescope otherwise you will not get credit for this section.
